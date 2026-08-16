@@ -1,12 +1,15 @@
 package com.shop.core.user.jpa
 
-import com.shop.core.user.entity.JoinEntity
+import com.shop.core.user.entity.JoinRequest
+import com.shop.core.user.entity.JoinResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+
 
 @Entity
 @Table(name = "user_info")
@@ -26,11 +29,18 @@ class UserInfo(
     var username: String = "",
 
     @Column(nullable = false)
-    var point: Int = 0
-
+    var point: Long = 0
 ) {
+    fun covertJpaToResponse(): JoinResponse =
+        JoinResponse(
+            email = this.email,
+            username = this.username,
+            userId = this.userId,
+            point = this.point
+        )
+
     companion object {
-        fun initJoin(joinRequest: JoinEntity) : UserInfo =
+        fun convertRequestToJpa(joinRequest: JoinRequest): UserInfo =
             UserInfo(
                 email = joinRequest.email,
                 username = joinRequest.username,

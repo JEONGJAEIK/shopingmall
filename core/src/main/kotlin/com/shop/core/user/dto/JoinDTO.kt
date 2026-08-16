@@ -1,14 +1,36 @@
 package com.shop.core.user.dto
 
+import com.shop.core.user.entity.JoinRequest
+import com.shop.core.user.entity.JoinResponse
+
 data class JoinRequestDTO(
     val email: String,
     val password: String,
     val username: String
-)
+) {
+    fun convertToEntity(): JoinRequest {
+        return JoinRequest(
+            email = this.email,
+            username = this.username,
+            password = this.password
+        )
+    }
+}
 
 data class JoinResponseDTO(
     val userId: Long,
     val email: String,
     val username: String,
-    val point: Int
-)
+    val point: Long
+) {
+    companion object {
+        fun convertToEntity(joinResponse: JoinResponse): JoinResponseDTO {
+            return JoinResponseDTO(
+                email = joinResponse.email,
+                username = joinResponse.username,
+                userId = joinResponse.userId,
+                point = joinResponse.point
+            )
+        }
+    }
+}

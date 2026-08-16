@@ -4,10 +4,11 @@ data class JoinRequest(
     val email: String,
     val password: String,
     val username: String
-) {
-    companion object {
-        fun convertToEntity(email: String, username: String, password: String) : JoinRequest{
-            return JoinRequest(email, username, password)
-        }
-    }
-}
+)
+
+data class JoinResponse(
+    val email: String,
+    val username: String,
+    val userId: Long,
+    val point: Long
+)
