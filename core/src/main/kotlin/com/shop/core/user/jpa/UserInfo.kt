@@ -1,5 +1,6 @@
-package com.shop.core.user.entity
+package com.shop.core.user.jpa
 
+import com.shop.core.user.entity.JoinEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -29,11 +30,11 @@ class UserInfo(
 
 ) {
     companion object {
-        fun initJoin(email: String, password: String, username: String) : UserInfo =
+        fun initJoin(joinRequest: JoinEntity) : UserInfo =
             UserInfo(
-                email = email,
-                password = password,
-                username = username
+                email = joinRequest.email,
+                username = joinRequest.username,
+                password = joinRequest.password,
             )
     }
 }
