@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 class JoinService(private val userInfoJPARepo: UserInfoJPARepo) {
 
     @Transactional
-    fun joinUser(joinRequest: JoinRequest) : User {
+    fun joinUser(joinRequest: JoinRequest): User {
         val newUserInfo = UserInfo.from(joinRequest)
         val save = userInfoJPARepo.save(newUserInfo)
         return save.toDomain()

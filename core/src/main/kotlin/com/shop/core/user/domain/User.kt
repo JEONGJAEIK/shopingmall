@@ -6,5 +6,4 @@ class User (
     val username: String,
     val password: String,
     val point: Long = 0
-) {
-}
+)
