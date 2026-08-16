@@ -1,4 +1,4 @@
-package com.shop.core.user.entity
+package com.shop.core.user.domain
 
 data class JoinRequest(
     val email: String,

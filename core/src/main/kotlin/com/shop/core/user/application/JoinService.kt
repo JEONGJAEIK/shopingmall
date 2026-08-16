@@ -1,9 +1,9 @@
-package com.shop.core.user.service
+package com.shop.core.user.application
 
-import com.shop.core.user.entity.JoinRequest
-import com.shop.core.user.entity.JoinResponse
-import com.shop.core.user.jpa.UserInfo
-import com.shop.core.user.repository.UserInfoJPARepo
+import com.shop.core.user.domain.JoinRequest
+import com.shop.core.user.domain.JoinResponse
+import com.shop.core.user.adapter.out.jpa.UserInfo
+import com.shop.core.user.adapter.out.repository.UserInfoJPARepo
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 

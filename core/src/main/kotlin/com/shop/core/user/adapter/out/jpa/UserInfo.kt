@@ -1,7 +1,7 @@
-package com.shop.core.user.jpa
+package com.shop.core.user.adapter.out.jpa
 
-import com.shop.core.user.entity.JoinRequest
-import com.shop.core.user.entity.JoinResponse
+import com.shop.core.user.domain.JoinRequest
+import com.shop.core.user.domain.JoinResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -17,7 +17,7 @@ class UserInfo(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val userId: Long? = null,
+    val userId: Long = 0,
 
     @Column(nullable = false)
     var email: String = "",

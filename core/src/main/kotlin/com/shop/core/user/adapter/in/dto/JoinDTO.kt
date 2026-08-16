@@ -1,7 +1,7 @@
-package com.shop.core.user.dto
+package com.shop.core.user.adapter.`in`.dto
 
-import com.shop.core.user.entity.JoinRequest
-import com.shop.core.user.entity.JoinResponse
+import com.shop.core.user.domain.JoinRequest
+import com.shop.core.user.domain.JoinResponse
 
 data class JoinRequestDTO(
     val email: String,
