@@ -31,7 +31,7 @@ class UserInfo(
     @Column(nullable = false)
     var point: Long = 0
 ) {
-    fun covertJpaToResponse(): JoinResponse =
+    fun toJoinResponse(): JoinResponse =
         JoinResponse(
             email = this.email,
             username = this.username,
@@ -40,7 +40,7 @@ class UserInfo(
         )
 
     companion object {
-        fun convertRequestToJpa(joinRequest: JoinRequest): UserInfo =
+        fun from(joinRequest: JoinRequest): UserInfo =
             UserInfo(
                 email = joinRequest.email,
                 username = joinRequest.username,

@@ -12,8 +12,8 @@ class JoinService(private val userInfoJPARepo: UserInfoJPARepo) {
 
     @Transactional
     fun joinUser(joinRequest: JoinRequest) : JoinResponse {
-        val newUserInfo = UserInfo.convertRequestToJpa(joinRequest)
+        val newUserInfo = UserInfo.from(joinRequest)
         val save = userInfoJPARepo.save(newUserInfo)
-        return save.covertJpaToResponse()
+        return save.toJoinResponse()
     }
 }

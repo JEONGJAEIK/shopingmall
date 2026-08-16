@@ -8,7 +8,7 @@ data class JoinRequestDTO(
     val password: String,
     val username: String
 ) {
-    fun convertToEntity(): JoinRequest {
+    fun toJoinRequest(): JoinRequest {
         return JoinRequest(
             email = this.email,
             username = this.username,
@@ -24,7 +24,7 @@ data class JoinResponseDTO(
     val point: Long
 ) {
     companion object {
-        fun convertToEntity(joinResponse: JoinResponse): JoinResponseDTO {
+        fun from(joinResponse: JoinResponse): JoinResponseDTO {
             return JoinResponseDTO(
                 email = joinResponse.email,
                 username = joinResponse.username,

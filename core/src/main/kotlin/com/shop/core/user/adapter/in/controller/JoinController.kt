@@ -5,6 +5,7 @@ import com.shop.core.user.adapter.`in`.dto.JoinResponseDTO
 import com.shop.core.user.application.JoinService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -15,10 +16,10 @@ class JoinController(
 ) {
 
     @PostMapping("/join")
-    fun joinUser(joinRequestDTO: JoinRequestDTO) : ResponseEntity<JoinResponseDTO> {
-        val joinRequest = joinRequestDTO.convertToEntity()
+    fun joinUser(@RequestBody joinRequestDTO: JoinRequestDTO) : ResponseEntity<JoinResponseDTO> {
+        val joinRequest = joinRequestDTO.toJoinRequest()
         val joinUser = joinService.joinUser(joinRequest)
-        val joinResponseDTO = JoinResponseDTO.convertToEntity(joinUser)
+        val joinResponseDTO = JoinResponseDTO.from(joinUser)
         return ResponseEntity.ok(joinResponseDTO)
     }
 }
