@@ -1,7 +1,7 @@
 package com.shop.core.user.adapter.`in`.dto
 
 import com.shop.core.user.domain.JoinRequest
-import com.shop.core.user.domain.JoinResponse
+import com.shop.core.user.domain.User
 
 data class JoinRequestDTO(
     val email: String,
@@ -24,12 +24,12 @@ data class JoinResponseDTO(
     val point: Long
 ) {
     companion object {
-        fun from(joinResponse: JoinResponse): JoinResponseDTO {
+        fun from(user: User): JoinResponseDTO {
             return JoinResponseDTO(
-                email = joinResponse.email,
-                username = joinResponse.username,
-                userId = joinResponse.userId,
-                point = joinResponse.point
+                email = user.email,
+                username = user.username,
+                userId = user.id,
+                point = user.point
             )
         }
     }

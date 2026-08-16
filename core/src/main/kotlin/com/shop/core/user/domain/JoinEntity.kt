@@ -5,10 +5,3 @@ data class JoinRequest(
     val password: String,
     val username: String
 )
-
-data class JoinResponse(
-    val email: String,
-    val username: String,
-    val userId: Long,
-    val point: Long
-)

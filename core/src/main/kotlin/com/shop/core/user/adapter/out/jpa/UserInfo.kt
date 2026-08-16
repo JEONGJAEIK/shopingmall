@@ -1,7 +1,7 @@
 package com.shop.core.user.adapter.out.jpa
 
 import com.shop.core.user.domain.JoinRequest
-import com.shop.core.user.domain.JoinResponse
+import com.shop.core.user.domain.User
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -31,12 +31,13 @@ class UserInfo(
     @Column(nullable = false)
     var point: Long = 0
 ) {
-    fun toJoinResponse(): JoinResponse =
-        JoinResponse(
+    fun toDomain(): User =
+        User(
             email = this.email,
             username = this.username,
-            userId = this.userId,
-            point = this.point
+            id = this.userId,
+            point = this.point,
+            password = this.password
         )
 
     companion object {
