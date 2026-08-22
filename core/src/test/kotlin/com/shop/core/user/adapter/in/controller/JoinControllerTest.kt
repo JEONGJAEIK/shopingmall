@@ -1,8 +1,10 @@
 package com.shop.core.user.adapter.`in`.controller
 
-import com.shop.core.user.application.JoinService
+import com.shop.core.user.application.CreateNewUserService
+import com.shop.core.user.application.JoinResult
 import com.shop.core.user.domain.JoinRequest
-import com.shop.core.user.domain.User
+import com.shop.core.user.domain.UserPoint
+import com.shop.core.user.domain.Users
 import org.junit.jupiter.api.Test
 import org.mockito.BDDMockito.given
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,7 +20,7 @@ class JoinControllerTest(
 ) {
 
     @MockitoBean
-    private lateinit var joinService: JoinService
+    private lateinit var createNewUserService: CreateNewUserService
 
     @Test
     fun `비밀번호가_유출되지_않는가`() {
@@ -27,13 +29,20 @@ class JoinControllerTest(
             password = "1234",
             username = "재익"
         )
-        given(joinService.joinUser(request))
+        given(createNewUserService.joinUser(request))
             .willReturn(
-                User(
-                    id = 1,
-                    email = "wodlr1207@gmail.com",
-                    password = "1234",
-                    username = "재익"
+                JoinResult(
+                    user = Users(
+                        id = 1,
+                        email = "wodlr1207@gmail.com",
+                        password = "1234",
+                        username = "재익"
+                    ),
+                    userPoint = UserPoint(
+                        id = 1,
+                        userId = 1,
+                        point = 0
+                    )
                 )
             )
 
@@ -51,6 +60,7 @@ class JoinControllerTest(
         }.andExpect {
             status { isOk() }
             jsonPath("$.email") { value("wodlr1207@gmail.com")}
+            jsonPath("$.point") { value(0) }
             jsonPath("$.password") { doesNotExist() }
         }
     }

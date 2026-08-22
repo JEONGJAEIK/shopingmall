@@ -1,7 +1,7 @@
 package com.shop.core.user.adapter.out.jpa
 
 import com.shop.core.user.domain.JoinRequest
-import com.shop.core.user.domain.User
+import com.shop.core.user.domain.Users
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -13,7 +13,7 @@ import jakarta.persistence.GenerationType
 
 @Entity
 @Table(name = "user_info")
-class UserInfo(
+class UserEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,21 +28,18 @@ class UserInfo(
     @Column(nullable = false)
     var username: String = "",
 
-    @Column(nullable = false)
-    var point: Long = 0
 ) {
-    fun toDomain(): User =
-        User(
+    fun toDomain(): Users =
+        Users(
             email = this.email,
             username = this.username,
             id = this.userId,
-            point = this.point,
             password = this.password
         )
 
     companion object {
-        fun from(joinRequest: JoinRequest): UserInfo =
-            UserInfo(
+        fun from(joinRequest: JoinRequest): UserEntity =
+            UserEntity(
                 email = joinRequest.email,
                 username = joinRequest.username,
                 password = joinRequest.password,
