@@ -19,13 +19,13 @@ class UserEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val userId: Long = 0,
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     var email: String = "",
 
     @Column(nullable = false)
     var password: String = "",
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     var username: String = "",
 
 ) {
