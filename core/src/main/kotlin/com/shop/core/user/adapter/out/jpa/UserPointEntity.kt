@@ -13,10 +13,10 @@ class UserPointEntity(
     val id: Long = 0,
 
     @Column(nullable = false)
-    var userId: Long = 0,
+    var userId: Long,
 
     @Column(nullable = false)
-    var point: Long = 0
+    var point: Long
 ) {
     fun toDomain(): UserPoint =
         UserPoint(
@@ -29,6 +29,7 @@ class UserPointEntity(
         fun createNewUserPoint(userId: Long): UserPointEntity =
             UserPointEntity(
                 userId = userId,
+                point = 0
             )
     }
 }

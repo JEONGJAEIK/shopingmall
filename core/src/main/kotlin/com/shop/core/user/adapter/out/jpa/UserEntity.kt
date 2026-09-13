@@ -20,13 +20,13 @@ class UserEntity(
     val userId: Long = 0,
 
     @Column(nullable = false, unique = true)
-    var email: String = "",
+    var email: String,
 
     @Column(nullable = false)
-    var password: String = "",
+    var password: String,
 
     @Column(nullable = false, unique = true)
-    var username: String = "",
+    var username: String
 
 ) {
     fun toDomain(): Users =
